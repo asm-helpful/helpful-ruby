@@ -1,15 +1,20 @@
-require './lib/helpful/version'
+# -*- encoding: utf-8 -*-
 
-Gem::Specification.new do |s|
-  s.name        = 'helpful'
-  s.version     = Helpful::VERSION
-  s.date        = '2012-02-18'
+Gem::Specification.new do |gem|
+  gem.name        = "helpful"
+  gem.version     = "0.1.0"
+  gem.description = "Official Helpful API library client for ruby"
+  gem.summary     = "Official Helpful API library client for ruby"
 
-  s.author      = 'Assembly'
-  s.email       = ['christopher.lloyd@gmail.com', 'helpful@assemblymade.com']
-  s.homepage    = 'http://assemblymade.com/helpful'
+  gem.author   = "Pavan Kumar Sunkara"
+  gem.email    = "pavan.sss1991@gmail.com"
+  gem.homepage = "https://helpful.io"
+  gem.license  = "MIT"
 
-  s.summary     = "A Ruby client library for Helpful.io"
+  gem.require_paths = ['lib']
 
-  s.files = Dir['{lib}/**/*']
+  gem.files = Dir["lib/**/*"]
+
+  gem.add_dependency "faraday", "~> 0.8.8"
+  gem.add_dependency "json", "~> 1.7.7"
 end
