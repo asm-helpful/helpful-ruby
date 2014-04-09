@@ -28,6 +28,14 @@ require "helpful"
 
 __Using this api without authentication gives an error__
 
+##### Basic authentication
+
+```ruby
+auth = { :username => 'pksunkara', :password => 'password' }
+
+client = Helpful::Client.new(auth, client_options)
+```
+
 ##### Oauth acess token
 
 ```ruby
