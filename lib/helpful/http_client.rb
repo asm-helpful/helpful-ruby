@@ -20,7 +20,8 @@ module Helpful
         end
 
         @options = {
-          :base => "https://helpful.io/api",
+          :base => "https://helpful.io",
+          :api_version => "api",
           :user_agent => "alpaca/0.2.0 (https://github.com/pksunkara/alpaca)"
         }
 
