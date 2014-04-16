@@ -6,7 +6,7 @@ module Helpful
     class RequestHandler
 
       def self.set_body(options)
-        type = options.has_key?(:request_type) ? options[:request_type] : "json"
+        type = options.fetch(:request_type, "json")
 
         # Encoding request body into JSON format
         if type == "json"
@@ -17,7 +17,7 @@ module Helpful
         # Raw body
         if type == "raw"
           options[:body] = options[:body].is_a?(Hash) ? "" : options[:body]
-          options[:headers].delete "content-type"
+          options[:headers].delete("content-type")
         end
 
         return options

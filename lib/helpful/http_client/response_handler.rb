@@ -10,11 +10,11 @@ module Helpful
         body = response.body
 
         # Response body is in JSON
-        if type.include? "json"
+        if type.include?("json")
           body = JSON.parse body
         end
 
-        body
+        return body
       end
 
     end
