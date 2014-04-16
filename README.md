@@ -115,44 +115,128 @@ body = {'user' => 'pksunkara'}
 # >>> '{"user": "pksunkara"}'
 ```
 
+### Accounts api
+
+These are like organizations which use Helpful.
+
+```ruby
+accounts = client.accounts()
+```
+
+##### List all accounts (GET /accounts)
+
+All the accounts the user has access to
+
+```ruby
+response = accounts.list(options)
+```
+
+##### Retrieve an account (GET /accounts/:account_id)
+
+Get an account the user has access to
+
+The following arguments are required:
+
+ * __account_id__: Identifier of the account
+
+```ruby
+response = accounts.get("b3ebe711-755e-4a91-b8d2-0cc028827bcf", options)
+```
+
+##### Update an account (PATCH /accounts/:account_id)
+
+Update an account the user has access to
+
+The following arguments are required:
+
+ * __account_id__: Identifier of the account
+
+```ruby
+response = accounts.update("b3ebe711-755e-4a91-b8d2-0cc028827bcf", options)
+```
+
+### People api
+
+People who operate or interacted with the account
+
+```ruby
+people = client.people()
+```
+
+##### List all people (GET /accounts/:account_id/people)
+
+List all people in the account the user has access to
+
+The following arguments are required:
+
+ * __account_id__: Identifier of the account
+
+```ruby
+response = people.list("b3ebe711-755e-4a91-b8d2-0cc028827bcf", options)
+```
+
 ### Conversations api
 
-API to work with conversations
+Conversations in an account
 
 ```ruby
 conversations = client.conversations()
 ```
 
-##### List all conversations (GET /conversations)
+##### List all conversations (GET /accounts/:account_id/conversations)
 
-List all conversations
-
-```ruby
-response = conversations.list(options)
-```
-
-##### Retrieve a conversation (GET /conversations/:id)
-
-Retrieve a conversation
+List all conversations in an account the user has access to
 
 The following arguments are required:
 
- * __id__: ID of the conversation
+ * __account_id__: Identifier of the account
+
+```ruby
+response = conversations.list("b3ebe711-755e-4a91-b8d2-0cc028827bcf", "false", options)
+```
+
+##### Create a conversation (POST /accounts/:account_id/conversations)
+
+Create an empty conversation in account the user has access to
+
+The following arguments are required:
+
+ * __account_id__: Identifier of the account
+
+```ruby
+response = conversations.create("b3ebe711-755e-4a91-b8d2-0cc028827bcf", options)
+```
+
+##### Retrieve a conversation (GET /conversations/:conversation_id)
+
+Get a conversation the user has access to
+
+The following arguments are required:
+
+ * __conversation_id__: Identifier of the conversation
 
 ```ruby
 response = conversations.get("10ce24de-23f6-433f-9a71-255cffffa96f", options)
 ```
 
-##### Update a conversation (PATCH /conversations/:id)
+### Messages api
 
-Update a conversation
+Messages in a conversation
+
+```ruby
+messages = client.messages()
+```
+
+##### Retrieve a message (GET /messages/:message_id)
+
+Get a message the user has access to
 
 The following arguments are required:
 
- * __id__: ID of the conversation
+ * __message_id__: Identifier of the message
 
 ```ruby
-response = conversations.update("10ce24de-23f6-433f-9a71-255cffffa96f", options)
+response = messages.get("33314e4e-baf5-4b33-be72-112ed86701fd", options)
 ```
 
 ## Contributors

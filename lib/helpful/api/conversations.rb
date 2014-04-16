@@ -2,50 +2,47 @@ module Helpful
 
   module Api
 
-    # API to work with conversations
+    # Conversations in an account
     class Conversations
 
       def initialize(client)
         @client = client
       end
 
-      # List all conversations
+      # List all conversations in an account the user has access to
       #
-      # '/conversations' GET
-      def list(options = {})
-        body = options.has_key?(:query) ? options[:query] : {}
+      # '/accounts/:account_id/conversations' GET
+      #
+      # account_id - Identifier of the account
+      def list(account_id, options = {})
+        body = options.fetch(:query, {})
+        body[:account_id] = account_id
 
-        response = @client.get("/conversations", body, options)
-
-        return response
+        @client.get("/accounts/#{account_id}/conversations", body, options)
       end
 
-      # Retrieve a conversation
+      # Create an empty conversation in account the user has access to
       #
-      # '/conversations/:id' GET
+      # '/accounts/:account_id/conversations' POST
       #
-      # id - ID of the conversation
-      def get(id, options = {})
-        body = options.has_key?(:query) ? options[:query] : {}
-        body[:id] = id
+      # account_id - Identifier of the account
+      def create(account_id, options = {})
+        body = options.fetch(:body, {})
+        body[:account_id] = account_id
 
-        response = @client.get("/conversations/#{id}", body, options)
-
-        return response
+        @client.post("/accounts/#{account_id}/conversations", body, options)
       end
 
-      # Update a conversation
+      # Get a conversation the user has access to
       #
-      # '/conversations/:id' PATCH
+      # '/conversations/:conversation_id' GET
       #
-      # id - ID of the conversation
-      def update(id, options = {})
-        body = options.has_key?(:body) ? options[:body] : {}
-        body[:id] = id
+      # conversation_id - Identifier of the conversation
+      def get(conversation_id, options = {})
+        body = options.fetch(:query, {})
+        body[:conversation_id] = conversation_id
 
-        response = @client.patch("/conversations/#{id}", body, options)
-
-        return response
+        @client.get("/conversations/#{conversation_id}", body, options)
       end
 
     end

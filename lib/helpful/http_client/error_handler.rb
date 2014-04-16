@@ -16,19 +16,19 @@ module Helpful
 
           case code
           when 500...599
-            raise Helpful::Error::ClientError.new "Error #{code}", code
+            raise Helpful::Error::ClientError.new("Error #{code}", code)
           when 400...499
-            body = Helpful::HttpClient::ResponseHandler.get_body env[:response]
+            body = Helpful::HttpClient::ResponseHandler.get_body(env[:response])
             message = ""
 
             # If HTML, whole body is taken
-            if body.is_a? String
+            if body.is_a?(String)
               message = body
             end
 
             # If JSON, a particular field is taken and used
             if type.include?("json") and body.is_a?(Hash)
-              if body.has_key? "error"
+              if body.has_key?("error")
                 message = body["error"]
               else
                 message = "Unable to select error message from json returned by request responsible for error"
