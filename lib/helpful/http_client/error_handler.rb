@@ -11,14 +11,14 @@ module Helpful
 
       def call(env)
         @app.call(env).on_complete do |env|
-          code = env[:response].status
-          type = env[:response].headers["content-type"]
+          code = env.status
+          type = env.response_headers["content-type"]
 
           case code
           when 500...599
             raise Helpful::Error::ClientError.new("Error #{code}", code)
           when 400...499
-            body = Helpful::HttpClient::ResponseHandler.get_body(env[:response])
+            body = Helpful::HttpClient::ResponseHandler.get_body(env)
             message = ""
 
             # If HTML, whole body is taken

@@ -14,7 +14,7 @@ $ gem install helpful
 
 #### Versions
 
-Works with [ 1.8.6 / 1.8.7 / 1.9.1 / 1.9.2 / 1.9.3 / 2.0.0 / 2.1.0 ]
+Works with [ 1.8.6 / 1.8.7 / 1.9.1 / 1.9.2 / 1.9.3 / 2.0.0 / 2.1.0 / 2.1.1 ]
 
 ## Usage
 
@@ -36,7 +36,7 @@ auth = { :username => 'pksunkara', :password => 'password' }
 client = Helpful::Client.new(auth, client_options)
 ```
 
-##### Oauth acess token
+##### Oauth access token
 
 ```ruby
 client = Helpful::Client.new('1a2b3', client_options)
@@ -62,7 +62,7 @@ The following options are available while instantiating a client:
 
 ### Response information
 
-__All the callbacks provided to an api call will recieve the response as shown below__
+__All the callbacks provided to an api call will receive the response as shown below__
 
 ```ruby
 response = client.klass('args').method('args', method_options)

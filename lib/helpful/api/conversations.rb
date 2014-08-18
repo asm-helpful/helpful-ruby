@@ -16,7 +16,6 @@ module Helpful
       # account_id - Identifier of the account
       def list(account_id, options = {})
         body = options.fetch(:query, {})
-        body[:account_id] = account_id
 
         @client.get("/accounts/#{account_id}/conversations", body, options)
       end
@@ -28,7 +27,6 @@ module Helpful
       # account_id - Identifier of the account
       def create(account_id, options = {})
         body = options.fetch(:body, {})
-        body[:account_id] = account_id
 
         @client.post("/accounts/#{account_id}/conversations", body, options)
       end
@@ -40,7 +38,6 @@ module Helpful
       # conversation_id - Identifier of the conversation
       def get(conversation_id, options = {})
         body = options.fetch(:query, {})
-        body[:conversation_id] = conversation_id
 
         @client.get("/conversations/#{conversation_id}", body, options)
       end

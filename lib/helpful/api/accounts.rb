@@ -25,7 +25,6 @@ module Helpful
       # account_id - Identifier of the account
       def get(account_id, options = {})
         body = options.fetch(:query, {})
-        body[:account_id] = account_id
 
         @client.get("/accounts/#{account_id}", body, options)
       end
@@ -37,7 +36,6 @@ module Helpful
       # account_id - Identifier of the account
       def update(account_id, options = {})
         body = options.fetch(:body, {})
-        body[:account_id] = account_id
 
         @client.patch("/accounts/#{account_id}", body, options)
       end
