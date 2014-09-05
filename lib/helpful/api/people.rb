@@ -16,7 +16,6 @@ module Helpful
       # account_id - Identifier of the account
       def list(account_id, options = {})
         body = options.fetch(:query, {})
-        body[:account_id] = account_id
 
         @client.get("/accounts/#{account_id}/people", body, options)
       end
