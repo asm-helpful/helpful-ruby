@@ -14,7 +14,7 @@ module Helpful
       # '/accounts/:account_id/conversations' GET
       #
       # account_id - Identifier of the account
-      def list(account_id, options = {})
+      def all(account_id, options = {})
         body = options.fetch(:query, {})
 
         @client.get("/accounts/#{account_id}/conversations", body, options)
