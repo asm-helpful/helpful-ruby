@@ -12,7 +12,7 @@ module Helpful
       # All the accounts the user has access to
       #
       # '/accounts' GET
-      def list(options = {})
+      def all(options = {})
         body = options.fetch(:query, {})
 
         @client.get("/accounts", body, options)
